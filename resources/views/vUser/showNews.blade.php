@@ -24,7 +24,7 @@
         <div class="col-lg-8">
 
           <!-- Preview Image -->
-          <img class="img-fluid rounded" src='{{ "data:img/" . $data->imageType . ";base64," . $data->image }}' alt="">
+          <img class="img-fluid rounded" src="{{ asset('image/berita/'.$data->gambar)  }}" alt="">
 
           <hr>
 
