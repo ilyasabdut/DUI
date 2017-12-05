@@ -34,7 +34,7 @@
              <td style="text-align: center;"><b>{{$dat->ID}}</b></td>
               <td style="text-align: center;"><strong>{{$dat->NPM}}</strong></td>
               <td style="text-align: center;">{{$dat->Nama}}</td>
-              <td style="text-align: center;">{{$dat->Pembimbing}}<</td>
+              <td style="text-align: center;">{{$dat->Pembimbing}}</td>
               <td style="text-align: center;"><strong>{{$dat->Judul}}</strong></td>      
               <td style="text-align: center;"><strong>{{$dat->Tanggal->format('d/m/Y')}}</strong></td>
              <td style="text-align: center;">{{$dat->angkatan}}</td>
