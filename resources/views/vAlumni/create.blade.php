@@ -8,7 +8,7 @@
 					 {{csrf_field()}}
 
 					  <fieldset>
-					    <legend>CRUD ALUMNI</legend>
+					    <legend>Masukan Data Alumni</legend>
 
 					    @if(count($errors) > 0)
 					    	@foreach($errors->all() as $error)
@@ -50,24 +50,25 @@
 
 
 						<div class="form-group">
+						      <label for="inputPenguji" class="col-lg-2 control-label">Penguji</label>
+						    <div class="col-lg-10">
+						        <input type="text" name="Penguji" class="form-control" id="inputPenguji" placeholder="Penguji">
+						    </div>
+						</div>
+
+						<div class="form-group">
 						      <label for="inputJudul" class="col-lg-2 control-label">Judul</label>
 						    <div class="col-lg-10">
 						        <input type="text" name="Judul" class="form-control" id="inputJudul" placeholder="Judul">
-						    </div>
-						</div>
-						<div class="form-group">
-						      <label for="inputAngkatan" class="col-lg-2 control-label">Angkatan</label>
-						    <div class="col-lg-10">
-						        <input type="text" name="Angkatan" class="form-control" id="inputAngkatan" placeholder="Judul">
-						    </div>
+									</div>
 						</div>
 
 
 					    <div class="form-group">
 					      <div class="col-lg-10 col-lg-offset-2">
-					        <button type="reset" class="btn btn-primaryt">Reset</button>
+					        <button type="reset" class="btn btn-primary">Reset</button>
 					        <button type="submit" class="btn btn-primary">Submit</button>
-  					        <a href="{{url('/admin/vAlumni/table')}}" class="btn btn-primary">Back</a>
+  					      <a href="{{url('/admin/vAlumni/table')}}" class="btn btn-primary">Back</a>
 					      </div>
 					    </div>
 					  </fieldset>

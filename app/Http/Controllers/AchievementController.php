@@ -19,26 +19,20 @@ use Carbon;
 
 class AchievementController extends Controller
 {
-       
+
 
 
 //DOSEN
      public function getDsn(){
 
-        $data = AchievementDosen::select('*')->orderBy('Tanggal','desc')
-                    ->get()
-                    ->groupBy(function($date) {
-                      return Carbon::parse($date->Tanggal)->format('Y');
-                 });
-
-
-        return view('vUser/achievement',compact('data',$data));
+      $data = AchievementDosen::all();
+        return view('vUser/achievement',compact('data'));
     }
-    
+
     public function getDataDosen(){
 
-    	$data = AchievementDosen::orderBy('ID', 'asc')->paginate(5);
-    	
+    	$data = AchievementDosen::all();
+
     	return view('vAchievementDosen/table',compact('data'));
     }
 
@@ -52,7 +46,7 @@ class AchievementController extends Controller
 
     	]);
 
-        
+
     	$data = new AchievementDosen;
     	$data->NIDN = $req->input('NIDN');
     	$data->Nama= $req->input('Nama');
@@ -70,11 +64,11 @@ class AchievementController extends Controller
 
     public function updateDosen($ID){
     	$data = AchievementDosen::find($ID);
-    	
+
     	return view('vAchievementDosen/update',['data' => $data]);
     }
 
-    public function edit(Request $req,$ID){
+    public function editDosen(Request $req,$ID){
     	$this->validate($req, [
     		'NIDN' => 'required',
             'Nama' => 'required',
@@ -104,7 +98,7 @@ class AchievementController extends Controller
 
     public function readDosen($ID){
     	$data = AchievementDosen::find($ID);
-    	
+
     	return view('vAchievementDosen/read',['data' => $data]);
     }
 
@@ -131,28 +125,30 @@ class AchievementController extends Controller
 
     public function importExcelDosen(Request $req)
     {
+      AchievementDosen::truncate();
+
         $this->validate($req, ['import_file' => 'required|mimes:xls,xlsx,csv']);
 
         if(Input::hasFile('import_file')){
             $path = Input::file('import_file')->getRealPath();
             $data = Excel::load($path, function($reader) {
-               
+
             })->get();
             if(!empty($data) && $data->count()){
                 foreach ($data as $key => $value) {
                     $insert[] = [
-                       
+
                     'NIDN' => $value->nidn,
                     'Nama' =>  $value->nama,
                     'Prestasi' => $value->prestasi,
                     'Tanggal' =>$value->tanggal,
                     'Keterangan' => $value->keterangan
-                ];} 
+                ];}
 
                 if(!empty($insert)){
                     DB::table('AchievementDosen')->insert($insert);
                 return redirect('/admin/vAchievementDosen/table')->with('info','Record Uploaded Successfully');
-                }          
+                }
             }
         }
         return back();
@@ -161,18 +157,14 @@ class AchievementController extends Controller
 //Mahasiswa
      public function getMhs(){
 
-        $data = AchievementMhs::select('*')->orderBy('Tanggal','desc')
-                    ->get()
-                    ->groupBy(function($date) {
-                      return Carbon::parse($date->Tanggal)->format('Y');
-                 });
- 
+        $data = AchievementMhs::all();
+
         return view('vUser/achievementstd',compact('data',$data));
     }
      public function getDataMhs(){
 
         $data = AchievementMhs::orderBy('ID', 'asc')->paginate(5);
-        
+
         return view('vAchievementMhs/table',compact('data'));
     }
 
@@ -205,7 +197,7 @@ class AchievementController extends Controller
 
     public function updateMhs($ID){
         $data = AchievementMhs::find($ID);
-        
+
         return view('vAchievementMhs/update',['data' => $data]);
     }
 
@@ -239,7 +231,7 @@ class AchievementController extends Controller
 
     public function readMhs($ID){
         $data = AchievementMhs::find($ID);
-        
+
         return view('vAchievementMhs/read',['data' => $data]);
     }
 
@@ -266,37 +258,38 @@ class AchievementController extends Controller
 
     public function importExcelMhs(Request $req)
     {
+      AchievementMhs::truncate();
         $this->validate($req, ['import_file' => 'required|mimes:xls,xlsx,csv']);
 
         if(Input::hasFile('import_file')){
             $path = Input::file('import_file')->getRealPath();
             $data = Excel::load($path, function($reader) {
-               
+
             })->get();
             if(!empty($data) && $data->count()){
                 foreach ($data as $key => $value) {
                     $insert[] = [
-                       
+
                     'NPM' => $value->npm,
                     'Nama' =>  $value->nama,
                     'Prestasi' => $value->prestasi,
                     'Tanggal' =>$value->tanggal,
                     'Keterangan' => $value->keterangan
-                ];} 
+                ];}
 
                 if(!empty($insert)){
                     DB::table('AchievementMhs')->insert($insert);
                 return redirect('/admin/vAchievementMhs/table')->with('info','Record Uploaded Successfully');
-                }          
+                }
             }
         }
         return back();
     }
-    
 
-   
 
-    
 
-    
+
+
+
+
 }

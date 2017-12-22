@@ -9,7 +9,7 @@ class Alumni extends Model
 {
     public $fillable = ['NPM','Nama', 'Pembimbing','Tanggal', 'angkatan', 'Judul'];
 
-   	protected $dates =  ['Tanggal'];
+   	protected $dates =  ['Tanggal','TanggalMasuk'];
 
 
 	public $timestamps = false;

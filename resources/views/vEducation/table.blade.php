@@ -16,13 +16,17 @@
 
                         <!-- /.panel-heading -->
                         <div class="panel-body">
+
+                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+
                             <table id="datatable-responsive" class="table table-striped table-bordered">
+
                                 <thead>
                                     <tr>
                                     	<th>ID</th>
                                         <th>Judul</th>
                                         <th>Isi</th>
-                                        <th width="230px">Action</th>
+                                        <th width="">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -34,7 +38,7 @@
 											<td>{{$data->Judul}}</td>
 											<td>{{$data->Isi}}</td>
 									      <td>
-									      	<a href='{{url("/admin//vEducation/read/{$data->ID}")}}' class="label label-primary"><i class="glyphicon glyphicon-list-alt"></i> Read </a>  &nbsp;
+
 									      	<a href='{{url("/admin//vEducation/update/{$data->ID}")}}' class="label label-success"><i class="glyphicon glyphicon-edit"></i> Update </a>  &nbsp;
 									      	<a href='{{url("/admin//vEducation/delete/{$data->ID}")}}'  class="label label-danger"><i class="glyphicon glyphicon-trash"></i> Delete </a>
 									      </td>

@@ -20,33 +20,16 @@ class PublicationController extends Controller
 
 public function getDsn(){
 
-        $data = PublicationDosen::select('*')->orderBy('Tanggal','desc')
-                    ->get()
-                    ->groupBy(function($date) {
-                      return Carbon::parse($date->Tanggal)->format('Y');
-                 });
-
-
+        $data = PublicationDosen::all();
         return view('vUser/publication',compact('data',$data));
     }
 
-    public function getMhs(){
-
-        $data = PublicationMhs::select('*')->orderBy('Tanggal','desc')
-                    ->get()
-                    ->groupBy(function($date) {
-                      return Carbon::parse($date->Tanggal)->format('Y');
-                 });
- 
-        return view('vUser/publicationstd',compact('data',$data));
-    }
-
 //=DOSEN=====
-	
+
     public function getDataDosen(){
 
-    	$data = PublicationDosen::orderBy('ID', 'asc')->paginate(5);
-    	
+    	$data = PublicationDosen::all();
+
     	return view('vPublicationDosen/table',compact('data'));
     }
 
@@ -79,7 +62,7 @@ public function getDsn(){
 
     public function updateDosen($ID){
     	$data = PublicationDosen::find($ID);
-    	
+
     	return view('vPublicationDosen/update',['data' => $data]);
     }
 
@@ -113,7 +96,7 @@ public function getDsn(){
 
     public function readDosen($ID){
     	$data = PublicationDosen::find($ID);
-    	
+
     	return view('vPublicationDosen/read',['data' => $data]);
     }
 
@@ -126,7 +109,7 @@ public function getDsn(){
                 return view('vPublicationDosen/table')->with('info','Record not Deleted');;
             }
     }
-    
+
 
      public function downloadExcelDosen($type)
     {
@@ -141,28 +124,30 @@ public function getDsn(){
 
     public function importExcelDosen(Request $req)
     {
+      PublicationDosen::truncate();
+
         $this->validate($req, ['import_file' => 'required|mimes:xls,xlsx,csv']);
 
         if(Input::hasFile('import_file')){
             $path = Input::file('import_file')->getRealPath();
             $data = Excel::load($path, function($reader) {
-               
+
             })->get();
             if(!empty($data) && $data->count()){
                 foreach ($data as $key => $value) {
                     $insert[] = [
-                       
+
                     'NIDN' => $value->nidn,
                     'Nama' =>  $value->nama,
                     'Judul' => $value->judul,
                     'Tanggal' =>$value->tanggal,
                     'Keterangan' => $value->keterangan
-                ];} 
+                ];}
 
                 if(!empty($insert)){
                     DB::table('PublicationDosen')->insert($insert);
                 return redirect('/admin/vPublicationDosen/table')->with('info','Record Uploaded Successfully');
-                }          
+                }
             }
         }
         return back();

@@ -22,31 +22,21 @@ class DedicationController extends Controller
 {
 	public function getDsn(){
 
-        $data = DedicationDosen::select('*')->orderBy('Tanggal','desc')
-                    ->get()
-                    ->groupBy(function($date) {
-                      return Carbon::parse($date->Tanggal)->format('Y');
-                 });
-
-
+        $data = DedicationDosen::all();
         return view('vUser/dedication',compact('data',$data));
     }
 
     public function getMhs(){
 
-        $data = DedicationMhs::select('*')->orderBy('Tanggal','desc')
-                    ->get()
-                    ->groupBy(function($date) {
-                      return Carbon::parse($date->Tanggal)->format('Y');
-                 });
- 
+        $data = DedicationMhs::all();
+
         return view('vUser/dedicationstd',compact('data',$data));
     }
 
     public function getDataDosen(){
 
-    	$data = DedicationDosen::orderBy('ID', 'asc')->paginate(5);
-    	
+    	$data = DedicationDosen::all();
+
     	return view('vDedicationDosen/table',compact('data'));
     }
 
@@ -78,7 +68,7 @@ class DedicationController extends Controller
 
     public function updateDosen($ID){
     	$data = DedicationDosen::find($ID);
-    	
+
     	return view('vDedicationDosen/update',['data' => $data]);
     }
 
@@ -110,7 +100,7 @@ class DedicationController extends Controller
 
     public function readDosen($ID){
     	$data = DedicationDosen::find($ID);
-    	
+
     	return view('vDedicationDosen/read',['data' => $data]);
     }
 
@@ -137,12 +127,14 @@ class DedicationController extends Controller
 
     public function importExcelDosen(Request $req)
     {
+			DedicationDosen::truncate();
+
         $this->validate($req, ['import_file' => 'required|mimes:xls,xlsx,csv']);
 
         if(Input::hasFile('import_file')){
             $path = Input::file('import_file')->getRealPath();
             $data = Excel::load($path, function($reader) {
-               
+
             })->get();
             if(!empty($data) && $data->count()){
                 foreach ($data as $key => $value) {
@@ -153,12 +145,12 @@ class DedicationController extends Controller
                     'Tempat' => $value->tempat,
                     'Jenis' => $value->jenis,
                     'Tanggal' =>$value->tanggal
-                ];} 
+                ];}
 
                 if(!empty($insert)){
                     DB::table('DedicationDosen')->insert($insert);
                 return redirect('/admin/vDedicationDosen/table')->with('info','Record Uploaded Successfully');
-                }          
+                }
             }
         }
         return back();
@@ -167,9 +159,9 @@ class DedicationController extends Controller
 //====MAHASISWA====
     public function getDataMhs(){
 
-        $data = DedicationMhs::orderBy('ID', 'asc')->paginate(5);
-        
-        return view('vDedicationMhs/table',compact('data'));
+        $data = DedicationMhs::paginate(4);
+
+        return view('vDedicationMhs/table',compact('data',$data));
     }
 
     public function addMhs(Request $req){
@@ -200,7 +192,7 @@ class DedicationController extends Controller
 
     public function updateMhs($ID){
         $data = DedicationMhs::find($ID);
-        
+
         return view('vDedicationMhs/update',['data' => $data]);
     }
 
@@ -232,7 +224,7 @@ class DedicationController extends Controller
 
     public function readMhs($ID){
         $data = DedicationMhs::find($ID);
-        
+
         return view('vDedicationMhs/read',['data' => $data]);
     }
 
@@ -259,32 +251,34 @@ class DedicationController extends Controller
 
     public function importExcelMhs(Request $req)
     {
+			DedicationMhs::truncate();
+
         $this->validate($req, ['import_file' => 'required|mimes:xls,xlsx,csv']);
 
         if(Input::hasFile('import_file')){
             $path = Input::file('import_file')->getRealPath();
             $data = Excel::load($path, function($reader) {
-               
+
             })->get();
             if(!empty($data) && $data->count()){
                 foreach ($data as $key => $value) {
                     $insert[] = [
-                       
+
                     'NPM' => $value->npm,
                     'Nama' =>  $value->nama,
                     'Tempat' => $value->tempat,
                     'Jenis' => $value->jenis,
+										'Judul' => $value->judul,
                     'Tanggal' =>$value->tanggal,
-                    'Gambar' => $value->gambar
-                ];} 
+                ];}
 
                 if(!empty($insert)){
                     DB::table('DedicationMhs')->insert($insert);
                 return redirect('/admin/vDedicationMhs/table')->with('info','Record Uploaded Successfully');
-                }          
+                }
             }
         }
         return back();
     }
-    
+
 }

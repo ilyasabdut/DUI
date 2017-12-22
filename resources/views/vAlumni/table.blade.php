@@ -1,7 +1,6 @@
 @include('inc.header1')
-<script src="{{URL::to('/')}}/Asset/ckeditor/ckeditor.js"></script>
 <div class="table-heading">
-<h2>Alumni Tables</h2>
+<h2>Data Alumni</h2>
 </div>
 @if(session('info'))
 <div class="alert alert-success">
@@ -13,11 +12,17 @@
 			      	             <a href='{{url("admin/vAlumni/create")}}' class="label label-primary"><i class="glyphicon glyphicon-pencil"></i> Create </a>  &nbsp;
 
                                  <a href='{{url("admin/vAlumni/upload")}}' class="label label-success"><i class="glyphicon glyphicon-sort"></i> Import/Export </a>
+                        </div>
+                        <div class="panel-heading">
+                        </div>
+                        <div class="panel-body">
+                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
 
 
                         </div>
                         <div class="panel-body">
                             <table id="datatable-responsive" class="table table-striped table-bordered">
+
                                 <thead>
                                     <tr>
                                     	<th>No</th>
@@ -25,9 +30,12 @@
                                         <th>Nama</th>
                                         <th>Pembimbing</th>
                                         <th>Tanggal</th>
+
+                                        <th>Penguji</th>
                                         <th>Judul</th>
                                         <th>Angkatan</th>
-                                        <th width="230">Action</th>
+
+                                        <th width="">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -39,11 +47,11 @@
                                       <td>{{$dat->Nama}}</td>
                                       <td>{{$dat->Pembimbing}}</td>
                                       <td>{{$dat->Tanggal}}</td>
-                                      <td>{{$dat->Judul}}</td>
-                                      <td>{{$dat->Angkatan}}</td>
 
+                                      <td>{{$dat->Penguji}}</td>
+                                      <td>{{$dat->Judul}}</td>
                                       <td>
-									      	              <a href='{{url("/admin/vAlumni/read/{$dat->ID}")}}' class="label label-primary"><i class="glyphicon glyphicon-list-alt"></i> Read </a>  &nbsp;
+
 									      	              <a href='{{url("/admin/vAlumni/update/{$dat->ID}")}}' class="label label-success"><i class="glyphicon glyphicon-edit"></i> Update </a>  &nbsp;
 									      	              <a href='{{url("/admin/vAlumni/delete/{$dat->ID}")}}'  class="label label-danger"><i class="glyphicon glyphicon-trash"></i> Delete </a>
 									                    </td>
@@ -52,9 +60,9 @@
 									              @endif
                                 </tbody>
                             </table>
-                            <div class="text-center">
-                              {!! $data->links(); !!}
-                            </div>
+														{!! $data->links() !!}
+</div>
+</div>
                         </div>
                     </div>
                 </div>

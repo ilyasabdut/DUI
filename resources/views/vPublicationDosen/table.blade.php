@@ -1,7 +1,7 @@
 @include('inc.header1')
 <script src="{{URL::to('/')}}/Asset/ckeditor/ckeditor.js"></script>
 <div class="table-heading">
-<h2>Lecturer's Publication Tables</h2>
+<h2>Publikasi Dosen</h2>
 </div>
 @if(session('info'))
 <div class="alert alert-success">
@@ -15,7 +15,11 @@
 
                         </div>
                         <div class="panel-body">
+
+                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+
                             <table id="datatable-responsive" class="table table-striped table-bordered">
+
                                 <thead>
                                     <tr>
                                     	  <th>ID</th>
@@ -35,7 +39,7 @@
 											                <td>{{$dat->NIDN}}</td>
                                       <td>{{$dat->Nama}}</td>
                                       <td>{{$dat->Judul}}</td>
-                                      <td>{{$dat->Tanggal}}</td>
+                                      <td>{{$dat->Tanggal->format('d-m-Y')}}</td>
                                       <td>{{$dat->Keterangan}}</td>
                                       <td>
 									      	              <a href='{{url("/admin/vPublicationDosen/read/{$dat->ID}")}}' class="label label-primary"><i class="glyphicon glyphicon-list-alt"></i>Read </a>  &nbsp;
@@ -47,9 +51,7 @@
 									              @endif
                                 </tbody>
                             </table>
-                            <div class="text-center">
-                              {!! $data->links(); !!}
-                            </div>
+
                         </div>
                     </div>
                 </div>

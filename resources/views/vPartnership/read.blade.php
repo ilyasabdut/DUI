@@ -3,7 +3,7 @@
 
 	<div class="container">
 			<div class="row">
-			 <legend>READ PARTNERSHIP</legend>
+			 <legend>Kerjasama</legend>
 				   		<p>{{$data->ID}}</p>
 						<p>{{$data->Partner}}</p>
 						<p>{{$data->Program}}</p>

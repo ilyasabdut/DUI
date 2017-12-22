@@ -1,7 +1,7 @@
 @include('inc.header1')
 <script src="{{URL::to('/')}}/Asset/ckeditor/ckeditor.js"></script>
 <div class="table-heading">
-	<h2>News Tables</h2>
+	<h2>Berita</h2>
 </div>
 
 @if(session('info'))
@@ -21,7 +21,7 @@
                         <th width="">Judul</th>
                         <th width="">Isi</th>
                         <th width="">Gambar</th>
-                        <th width="230px">Action</th>
+                        <th width="">Action</th>
                         </tr>
                       </thead>
 
@@ -42,7 +42,6 @@
                             </td>
                             <td><img src="{{ asset('image/berita/'.$dat->gambar)  }}" style="max-height:200px;max-width:200px;margin-top:10px;"></td>
                             <td>
-                              <a href='{{url("/admin/vNews/read/{$dat->ID}")}}' class="label label-primary"><i class="glyphicon glyphicon-list-alt"></i> Read </a>  &nbsp;
                               <a href='{{url("/admin/vNews/update/{$dat->ID}")}}' class="label label-success"><i class="glyphicon glyphicon-edit"></i> Update </a>  &nbsp;
                               <a href='{{url("/admin/vNews/delete/{$dat->ID}")}}'  class="label label-danger"><i class="glyphicon glyphicon-trash"></i> Delete </a>
                             </td>
@@ -51,7 +50,8 @@
                       @endif
                       </tbody>
 
- 
+
+
                         </div>
                     </div>
                 </div>

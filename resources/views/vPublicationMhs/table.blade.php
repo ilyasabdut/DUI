@@ -1,7 +1,7 @@
 @include('inc.header1')
 <script src="{{URL::to('/')}}/Asset/ckeditor/ckeditor.js"></script>
 <div class="table-heading">
-<h2>Student Publication Table</h2>
+<h2>Publikasi Mahasiswa</h2>
 </div>
 @if(session('info'))
 <div class="alert alert-success">
@@ -15,7 +15,11 @@
 
                         </div>
                         <div class="panel-body">
+
+                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+
                             <table id="datatable-responsive" class="table table-striped table-bordered">
+
                                 <thead>
                                     <tr>
                                     	  <th>ID</th>
@@ -24,7 +28,7 @@
                                         <th>Judul</th>
                                         <th>Tanggal</th>
                                         <th>Keterangan</th>
-                                        <th width="230px">Action</th>
+                                        <th width="">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -38,8 +42,7 @@
                                       <td>{{$dat->Tanggal}}</td>
                                       <td>{{$dat->Keterangan}}</td>
                                       <td>
-									      	              <a href='{{url("/admin/vPublicationMhs/read/{$dat->ID}")}}' class="label label-primary"><i class="glyphicon glyphicon-list-alt"></i> Read </a> &nbsp;
-									      	              <a href='{{url("/admin/vPublicationMhs/update/{$dat->ID}")}}' class="label label-success"><i class="glyphicon glyphicon-edit"></i> Update </a> &nbsp;
+									      	             <a href='{{url("/admin/vPublicationMhs/update/{$dat->ID}")}}' class="label label-success"><i class="glyphicon glyphicon-edit"></i> Update </a> &nbsp;
 									      	              <a href='{{url("/admin/vPublicationMhs/delete/{$dat->ID}")}}'  class="label label-danger"><i class="glyphicon glyphicon-trash"></i> Delete </a>
 									                    </td>
 									                  </tr>
@@ -47,9 +50,7 @@
 									              @endif
                                 </tbody>
                             </table>
-                            <div class="text-center">
-                              {!! $data->links(); !!}
-                            </div>
+
                         </div>
                     </div>
                 </div>

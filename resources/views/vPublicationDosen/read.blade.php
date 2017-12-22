@@ -3,7 +3,7 @@
 
 	<div class="container">
 			<div class="row">
-			 <legend>READ LECTURERS PUBLICATION</legend>
+			 <legend>Publikasi Dosen</legend>
 				   		<p>{{$data->ID}}</p>
 						<p>{{$data->NIDN}}</p>
 						<p>{{$data->Nama}}</p>

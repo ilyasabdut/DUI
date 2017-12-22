@@ -14,11 +14,19 @@
 //Homepage
 Route::get('/', 'NewsController@getNews');
 
+Route::get('/vUser/news', 'NewsController@viewNews');
+
+
+// Route::get('/vUser/showNews', 'NewsController@lastNews');
+
+//404
+Route::get('/vUser/notfound', function () {
+    return view('/vUser/notfound');
+});
 
 //Newspage
-Route::get('/vUser/news', function () {
-    return view('/vUser/news');
-});
+
+
 
 Route::get('/vUser/showNews/{ID}', 'NewsController@show');
 

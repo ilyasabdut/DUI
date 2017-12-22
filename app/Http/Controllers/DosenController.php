@@ -8,6 +8,11 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\Dosen;
+use App\DedicationDosen;
+use App\AchievementDosen;
+use App\PublicationDosen;
+use App\ResearchDosen;
+
 use DB;
 use Excel;
 use Input;
@@ -22,13 +27,13 @@ class DosenController extends Controller
 {
 	public function getDsn(){
 
-        $data = Dosen::orderBy('NIDN', 'asc')->get();
+        $data = Dosen::all();
         return view('vUser/lecturer',compact('data'));
     }
 
     public function getData(){
 
-    	$data = Dosen::orderBy('ID', 'asc')->paginate(5);
+    	$data = Dosen::all();
 
     	return view('vDosen/table',compact('data'));
     }
@@ -125,6 +130,8 @@ class DosenController extends Controller
 
     public function importExcel(Request $req)
     {
+			Dosen::truncate();
+
         $this->validate($req, ['import_file' => 'required|mimes:xls,xlsx,csv']);
 
         if(Input::hasFile('import_file')){
@@ -152,4 +159,5 @@ class DosenController extends Controller
         }
         return back();
     }
+
 }

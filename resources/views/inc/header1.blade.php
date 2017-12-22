@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <head>
+<link rel="shortcut icon" type="image/icon" href="{{URL::to('/')}}/newasset/img/logo-unpad.png"/>
 <title>Informatika Unpad</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -17,6 +18,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link rel="stylesheet" href="{{URL::to('/')}}/admasset/css/font.css" type="text/css"/>
 <link href="{{URL::to('/')}}/admasset/css/font-awesome.css" rel="stylesheet">
 <!-- //font-awesome icons -->
+
+<link href="{{URL::to('/')}}/admasset/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="{{URL::to('/')}}/admasset/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="{{URL::to('/')}}/admasset/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="{{URL::to('/')}}/admasset/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="{{URL::to('/')}}/admasset/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+
 <script src="{{URL::to('/')}}/admasset/js/jquery2.0.3.min.js"></script>
 <script src="{{URL::to('/')}}/admasset/js/modernizr.js"></script>
 <script src="{{URL::to('/')}}/admasset/js/jquery.cookie.js"></script>
@@ -37,6 +45,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		});
 		</script>
 
+
 </head>
 <body class="dashboard-page">
 
@@ -54,7 +63,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<a href="{{'/admin/vNews/table'}}">
 					<i class="icon-table nav-icon"></i>
 					<span class="nav-text">
-					News Tables
+					Berita
 					</span>
 				</a>
 			</li>
@@ -62,15 +71,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<a href="{{'/admin/vPartnership/table'}}">
 					<i class="icon-table nav-icon"></i>
 					<span class="nav-text">
-					Partnership Tables
-					</span>
-				</a>
-			</li>
-			<li>
-				<a href="{{'/admin/vEducation/table'}}">
-					<i class="icon-table nav-icon"></i>
-					<span class="nav-text">
-					Education Tables
+					Kerjasama
 					</span>
 				</a>
 			</li>
@@ -78,55 +79,49 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<a href="{{'/admin/vAlumni/table'}}">
 					<i class="icon-table nav-icon"></i>
 					<span class="nav-text">
-					Alumni Tables
+					Alumni
 					</span>
 				</a>
 			</li>
 			<li class="has-subnav">
 				<a href="javascript:;">
 					<i class="fa fa-list-ul" aria-hidden="true"></i>
-					<span class="nav-text">Lecturer Tables</span>
+					<span class="nav-text">Tabel Dosen</span>
 					<i class="icon-angle-right"></i><i class="icon-angle-down"></i>
 				</a>
 				<ul>
 					<li>
-						<a class="subnav-text" href="{{'/admin/vDosen/table'}}">Lecturers Tables</a>
+						<a class="subnav-text" href="{{'/admin/vDosen/table'}}">Dosen</a>
 					</li>
 					<li>
-						<a class="subnav-text" href="{{'/admin/vPublicationDosen/table'}}">Lecturers Publication Tables</a>
+						<a class="subnav-text" href="{{'/admin/vPublicationDosen/table'}}">Publikasi</a>
 					</li>
 					<li>
-						<a class="subnav-text" href="{{'/admin/vResearchDosen/table'}}">Lecturers Research Tables</a>
+						<a class="subnav-text" href="{{'/admin/vResearchDosen/table'}}">Penelitian</a>
 					</li>
 					<li>
-						<a class="subnav-text" href="{{'/admin/vDedicationDosen/table'}}">Lecturers Social Engagement Tables</a>
+						<a class="subnav-text" href="{{'/admin/vDedicationDosen/table'}}">Pengabdian</a>
 					</li>
 					<li>
-						<a class="subnav-text" href="{{'/admin/vAchievementDosen/table'}}">Lecturers Achievement Tables</a>
+						<a class="subnav-text" href="{{'/admin/vAchievementDosen/table'}}">Prestasi</a>
 					</li>
 				</ul>
 			</li>
 			<li class="has-subnav">
 				<a href="javascript:;">
 					<i class="fa fa-list-ul" aria-hidden="true"></i>
-					<span class="nav-text">Student Tables</span>
+					<span class="nav-text">Tabel Mahasiswa</span>
 					<i class="icon-angle-right"></i><i class="icon-angle-down"></i>
 				</a>
 				<ul>
 					<li>
-						<a class="subnav-text" href="{{'/admin/vMahasiswa/table'}}">Student Tables</a>
+						<a class="subnav-text" href="{{'/admin/vMahasiswa/table'}}">Mahasiswa</a>
 					</li>
 					<li>
-						<a class="subnav-text" href="{{'/admin/vPublicationMhs/table'}}">Student Publication Tables</a>
+						<a class="subnav-text" href="{{'/admin/vDedicationMhs/table'}}">Pengabdian</a>
 					</li>
 					<li>
-						<a class="subnav-text" href="{{'/admin/vResearchMhs/table'}}">Student Research Tables</a>
-					</li>
-					<li>
-						<a class="subnav-text" href="{{'/admin/vDedicationMhs/table'}}">Student Social Engagement Tables</a>
-					</li>
-					<li>
-						<a class="subnav-text" href="{{'/admin/vAchievementMhs/table'}}">Student Achievement Tables</a>
+						<a class="subnav-text" href="{{'/admin/vAchievementMhs/table'}}">Prestasi</a>
 					</li>
 				</ul>
 			</li>

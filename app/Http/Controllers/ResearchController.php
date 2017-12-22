@@ -20,32 +20,18 @@ class ResearchController extends Controller
 {
  public function getDsn(){
 
-        $data = ResearchDosen::select('*')->orderBy('Tanggal','desc')
-                    ->get()
-                    ->groupBy(function($date) {
-                      return Carbon::parse($date->Tanggal)->format('Y');
-                 });
+   $data = ResearchDosen::all();
 
-
-        return view('vUser/research',compact('data',$data));
+   return view('vUser/research',compact('data',$data));
     }
 
 
- public function getMhs(){
 
-        $data = ResearchMhs::select('*')->orderBy('Tanggal','desc')
-                    ->get()
-                    ->groupBy(function($date) {
-                      return Carbon::parse($date->Tanggal)->format('Y');
-                 });    
-        return view('vUser/researchstd',compact('data',$data));
-    }
-    
-//====DOSEN=	
+//====DOSEN=
     public function getDataDosen(){
 
-    	$data = ResearchDosen::orderBy('ID', 'asc')->paginate(5);
-    	
+    	$data = ResearchDosen::all();
+
     	return view('vResearchDosen/table',compact('data'));
     }
 
@@ -78,7 +64,7 @@ class ResearchController extends Controller
 
     public function updateDosen($ID){
     	$data = ResearchDosen::find($ID);
-    	
+
     	return view('vResearchDosen/update',['data' => $data]);
     }
 
@@ -112,7 +98,7 @@ class ResearchController extends Controller
 
     public function readDosen($ID){
     	$data = ResearchDosen::find($ID);
-    	
+
     	return view('vResearchDosen/read',['data' => $data]);
     }
 
@@ -139,28 +125,30 @@ class ResearchController extends Controller
 
     public function importExcelDosen(Request $req)
     {
+      ResearchDosen::truncate();
+
         $this->validate($req, ['import_file' => 'required|mimes:xls,xlsx,csv']);
 
         if(Input::hasFile('import_file')){
             $path = Input::file('import_file')->getRealPath();
             $data = Excel::load($path, function($reader) {
-               
+
             })->get();
             if(!empty($data) && $data->count()){
                 foreach ($data as $key => $value) {
                     $insert[] = [
-                       
+
                     'NIDN' => $value->nidn,
                     'Nama' =>  $value->nama,
                     'Judul' => $value->judul,
                     'Tanggal' =>$value->tanggal,
                     'Jenis' => $value->jenis
-                ];} 
+                ];}
 
                 if(!empty($insert)){
                     DB::table('ResearchDosen')->insert($insert);
                 return redirect('/admin/vResearchDosen/table')->with('info','Record Uploaded Successfully');
-                }          
+                }
             }
         }
         return back();

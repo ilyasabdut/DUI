@@ -6,7 +6,7 @@
       <div class="col-md-6">
          <fieldset>
 
-             <legend>UPLOAD LECTURER'S ACHIEVEMENT</legend>
+             <legend>Upload Prestasi Dosen</legend>
                @if(session('info'))
                           <div class="alert alert-success">
                       {{session('info')}}

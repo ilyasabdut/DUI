@@ -12,7 +12,7 @@
 					 {{csrf_field()}}
 
 					  <fieldset>
-					    <legend>UPDATE LECTURER</legend>
+					    <legend>Dosen</legend>
 					    @if(count($errors) > 0)
 					    	@foreach($errors->all() as $error)
 
@@ -22,7 +22,7 @@
 
 					    	@endforeach
 					    @endif
-					    
+
 					    <div class="form-group">
 					      <label for="inputNPM" class="col-lg-2 control-label">NIDN</label>
 					      <div class="col-lg-10">
@@ -40,14 +40,14 @@
 						<div class="form-group">
 						      <label for="inputPembimbing" class="col-lg-2 control-label">Email</label>
 						    <div class="col-lg-10">
-						        <input type="text" name="Email" class="form-control" 
+						        <input type="text" name="Email" class="form-control"
 						        value="<?php echo $data->Email; ?>" id="inputEmail" placeholder="Email">
 						    </div>
 						</div>
-						
-						
 
-					       
+
+
+
 					    <div class="form-group">
 					      <div class="col-lg-10 col-lg-offset-2">
 					        <button type="reset" class="btn btn-default">Reset</button>

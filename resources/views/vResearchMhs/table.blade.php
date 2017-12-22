@@ -1,5 +1,5 @@
 @include('inc.header1')
-<script src="{{URL::to('/')}}/Asset/ckeditor/ckeditor.js"></script>
+
 <div class="table-heading">
 <h2>Student Research Table</h2>
 </div>
@@ -15,7 +15,11 @@
 
                         </div>
                         <div class="panel-body">
+
+                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+
                             <table id="datatable-responsive" class="table table-striped table-bordered">
+
                                 <thead>
                                     <tr>
                                     	  <th>ID</th>
@@ -47,9 +51,7 @@
 									              @endif
                                 </tbody>
                             </table>
-                            <div class="text-center">
-                              {!! $data->links(); !!}
-                            </div>
+
                         </div>
                     </div>
                 </div>

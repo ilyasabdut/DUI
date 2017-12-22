@@ -19,14 +19,14 @@ class MahasiswaController extends Controller
 {
 	public function getMhs(){
 
-        $data = Mahasiswa::orderBy('ID', 'asc')->paginate(10);       
+$data = Mahasiswa::all();
         return view('vUser/student',compact('data'));
     }
 
     public function getData(){
 
-    	$data = Mahasiswa::orderBy('ID', 'asc')->paginate(5);
-    	
+    	$data = Mahasiswa::all();
+
     	return view('vMahasiswa/table',compact('data'));
     }
 
@@ -36,7 +36,8 @@ class MahasiswaController extends Controller
     		'NPM' => 'required',
     		'Nama' => 'required',
     		'Email' => 'required',
-    		
+            'TanggalMasuk' => 'required'
+
     	]);
 
 
@@ -44,7 +45,8 @@ class MahasiswaController extends Controller
     	$data->NPM = $req->input('NPM');
     	$data->Nama = $req->input('Nama');
     	$data->Email = $req->input('Email');
-    	
+        $data->TanggalMasuk = $req->input('TanggalMasuk');
+
     	$data->save();
 
     	  if(count($data) > 0){
@@ -56,7 +58,7 @@ class MahasiswaController extends Controller
 
     public function update($ID){
     	$data = Mahasiswa::find($ID);
-    	
+
     	return view('vMahasiswa/update',['data' => $data]);
     }
 
@@ -65,12 +67,14 @@ class MahasiswaController extends Controller
     		'NPM' => 'required',
             'Nama' => 'required',
             'Email' => 'required',
+            'TanggalMasuk' => 'required'
     	]);
 
     	$data = array(
     	'NPM'=> $req->input('NPM'),
         'Nama' => $req->input('Nama'),
-        'Email'=> $req->input('Email')
+        'Email'=> $req->input('Email'),
+        'TanggalMasuk' => $req->input('TanggalMasuk'),
     	);
 
     	Mahasiswa::where('ID', $ID)->update($data);
@@ -84,7 +88,7 @@ class MahasiswaController extends Controller
 
     public function read($ID){
     	$data = Mahasiswa::find($ID);
-    	
+
     	return view('vMahasiswa/read',['data' => $data]);
     }
 
@@ -111,30 +115,33 @@ class MahasiswaController extends Controller
 
     public function importExcel(Request $req)
     {
+       Mahasiswa::truncate();
+
         $this->validate($req, ['import_file' => 'required|mimes:xls,xlsx,csv']);
 
         if(Input::hasFile('import_file')){
             $path = Input::file('import_file')->getRealPath();
             $data = Excel::load($path, function($reader) {
-               
+
             })->get();
             if(!empty($data) && $data->count()){
                 foreach ($data as $key => $value) {
                     $insert[] = [
-                       
+
                     'NPM' => $value->npm,
                     'Nama' =>  $value->nama,
-                    'Email' => $value->email
-                    
-                ];} 
+                    'Email' => $value->email,
+                    'TanggalMasuk' => $value->tanggalmasuk
+
+                ];}
 
                 if(!empty($insert)){
                     DB::table('Mahasiswa')->insert($insert);
                 return redirect('/admin/vMahasiswa/table')->with('info','Record Uploaded Successfully');
-                }          
+                }
             }
         }
         return back();
     }
-    
+
 }

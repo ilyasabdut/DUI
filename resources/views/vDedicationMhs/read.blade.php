@@ -2,7 +2,7 @@
 
 	<div class="container">
 			<div class="row">
-			 <legend>READ STUDENT SOCIAL ENGAGEMENT</legend>
+			 <legend>Pengabdian Mahasiswa</legend>
 				   		<P>{{$data->ID}}</P>
 						<P>{{$data->NPM}}</P>
 						<P>{{$data->Nama}}</P>

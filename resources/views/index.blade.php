@@ -1,383 +1,359 @@
+@include('inc.new_header')
+<!--=========== BEGIN SLIDER SECTION ================-->
+    <section id="slider">
+      <div class="row">
+        <div class="col-lg-12 col-md-12">
+          <div class="slider_area">
+            <!-- Start super slider -->
+            <div id="slides">
+              <ul class="slides-container">
 
-    @include('inc.headerOther')
-    <!-- Header -->
-    <header class="masthead">
-      <div class="container">
-          <!--<div class="intro-lead-in">Welcome To</div>
-          <div class="intro-heading">COMPUTER SCIENCE</div>-->
-         
-        </div>
-      </div>
-    </header>
-      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner" role="listbox">
-          <!-- Slide One - Set the background image for this slide in the line below -->
-          <div class="carousel-item active" style="background-image: url('http://placehold.it/1900x1080')">
-            <div class="carousel-caption d-none d-md-block">
-              <h3>First Slide</h3>
-              <p>This is a description for the first slide.</p>
-            </div>
-          </div>
-          <!-- Slide Two - Set the background image for this slide in the line below -->
-          <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')">
-            <div class="carousel-caption d-none d-md-block">
-              <h3>Second Slide</h3>
-              <p>This is a description for the second slide.</p>
-            </div>
-          </div>
-          <!-- Slide Three - Set the background image for this slide in the line below -->
-          <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')">
-            <div class="carousel-caption d-none d-md-block">
-              <h3>Third Slide</h3>
-              <p>This is a description for the third slide.</p>
-            </div>
-          </div>
-        </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
-       <section class="bg-light" id="portfolio1" style="padding-top: 50px;">
-
-     <div class="container">
-        <div class="row">
-          <div class="col-lg-12 text-center">
-            <h1 class="section-heading"  style="padding-top: 30px;">Berita</h1>
-          </div>
-        </div>
-<div class="container">
-                    
-                 <div class="row">
-                  
-        @if(count($data)>0)
-               @foreach  ($data as $dat)
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-          <div class="card h-100">
-           <a href='{{url("/vUser/showNews/{$dat->ID}")}}'><img class="card-img-top" src="{{ asset('image/berita/'.$dat->gambar)  }}" alt="Disini Gambar Berita"></a>
-            <div class="card-body">
-              <h4 class="card-title">
-                <a href='{{url("/vUser/showNews/{$dat->ID}")}}'>{{$dat->Judul}}</a>
-              </h4>
-            </div>
-          </div>
-        </div>
-
-        @endforeach
-                                      {!! $data->links(); !!}
-
-                                @endif
-    
-    </div>
-  </div>
-</div>
-
-
-<!--
-</section>
-    <!-- About Computer Science
-    <section class="bg-light" id="portfolio" style="padding-top: 50px;">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12 text-center">
-            <h2 class="section-heading">About Computer Science</h2>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-4 col-sm-6 portfolio-item">
-            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
-              <div class="portfolio-hover">
-                <div class="portfolio-hover-content">
-                  <i class="fa fa-search-plus fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="{{URL::to('/')}}/assets/one/img/new/Visi.png" alt="">
-            </a>
-            <div class="portfolio-caption">
-              <h4>Visi</h4>
-
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-6 portfolio-item">
-            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal2">
-              <div class="portfolio-hover">
-                <div class="portfolio-hover-content">
-                  <i class="fa fa-search-plus fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="{{URL::to('/')}}/assets/one/img/new/Misi.png" alt="">
-            </a>
-            <div class="portfolio-caption">
-              <h4>Misi</h4>
-
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-6 portfolio-item">
-            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal3">
-              <div class="portfolio-hover">
-                <div class="portfolio-hover-content">
-                  <i class="fa fa-search-plus fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="{{URL::to('/')}}/assets/one/img//new/Rencana.png" alt="">
-            </a>
-            <div class="portfolio-caption">
-              <h4>Rencana Strategis</h4>
-
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-6 portfolio-item">
-            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
-              <div class="portfolio-hover">
-                <div class="portfolio-hover-content">
-                  <i class="fa fa-search-plus fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="{{URL::to('/')}}/assets/one/img/new/latar.png" alt="">
-            </a>
-            <div class="portfolio-caption">
-              <h4>Latar Belakang</h4>
-
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-6 portfolio-item">
-            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal5">
-              <div class="portfolio-hover">
-                <div class="portfolio-hover-content">
-                  <i class="fa fa-search-plus fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="{{URL::to('/')}}/assets/one/img/new/lulus.png" alt="">
-            </a>
-            <div class="portfolio-caption">
-              <h4>Kompetensi Lulusan</h4>
-
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-6 portfolio-item">
-            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal6">
-              <div class="portfolio-hover">
-                <div class="portfolio-hover-content">
-                  <i class="fa fa-search-plus fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="{{URL::to('/')}}/assets/one/img/new/lulusan.png" alt="">
-            </a>
-            <div class="portfolio-caption">
-              <h4>Prospek Lulusan</h4>
+                @if(count($data)>0)
+                @foreach  ($data as $dat)
+                <li>
+                  <img src="{{ asset('image/berita/'.$dat->gambar)}}" alt="img">
+                   <div class="slider_caption">
+                    <h2>{{$dat->Judul}}</h2>
+                    <p><?php
+                    $artikel = $dat->Isi;
+                    $tag_artikel = strip_tags($artikel);
+                    $sub_artikel = substr($tag_artikel,0,250)." . . .";
+                    echo $sub_artikel;
+                    ?></p>
+                    <a class="slider_btn" href='{{url("/vUser/showNews/{$dat->ID}")}}'>Know More</a>
+                  </div>
+                  </li>
+                  @endforeach
+                  @endif
+              </ul>
+              <nav class="slides-navigation">
+                <a href="#" class="next"></a>
+                <a href="#" class="prev"></a>
+              </nav>
             </div>
           </div>
         </div>
       </div>
     </section>
+    <!--=========== END SLIDER SECTION ================-->
 
-     Portfolio Modals 
-
-   
-    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="close-modal" data-dismiss="modal">
-            <div class="lr">
-              <div class="rl"></div>
-            </div>
-          </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-8 mx-auto">
-                <div class="modal-body">
-                
-                  <h2>Visi Computer Science</h2>
-                  <img class="{{URL::to('/')}}/assets/one/img-fluid d-block mx-auto" src="{{URL::to('/')}}/assets/one/img/new/Visi.png" alt="">
-                  <p style="text-align:justify">Pada tahun 2026, menjadi Prodi Teknik Informatika yang unggul di tingkat nasional serta diakui di tingkat regional dalam bidang pendidikan, penelitian, dan pengabdian kepada masyarakat.</p>
-                  <button class="btn btn-primary" data-dismiss="modal" type="button">
-                    <i class="fa fa-times"></i>
-                    Close Visi</button>
-                </div>
-              </div>
-            </div>
+    <!--=========== BEGIN ABOUT US SECTION ================-->
+    <section id="aboutUs">
+      <div class="container">
+        <div class="row">
+        <!-- Start about us area -->
+        <div class="col-lg-6 col-md-6 col-sm-6">
+          <div class="aboutus_area wow fadeInLeft">
+            <h2 class="titile">Tentang Prodi</h2>
+            <p class="dua" align="justify">Program Sarjana Program Studi Teknik Informatika merupakan pengembangan dari Bidang Minat Ilmu Komputer di Jurusan Matematika FMIPA Universitas Padjadjaran, sesuai dengan rencana strategis jurusan, fakultas, dan universitas. Kurikulum Bidang Minat Ilmu Komputer diberlakukan
+              tahun 2004 dan telah menghasilkan lulusan yang terserap di berbagai institusi baik negeri maupun swasta tersebar di Indonesia.</p>
           </div>
         </div>
-      </div>
-    </div>
+        <div class="col-lg-6 col-md-6 col-sm-6">
+          <div class="newsfeed_area wow fadeInRight">
+            <ul class="nav nav-tabs feed_tabs" id="myTab2">
+              <li class="active"><a href="#news" data-toggle="tab">News</a></li>
+            </ul>
 
- 
-    <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="close-modal" data-dismiss="modal">
-            <div class="lr">
-              <div class="rl"></div>
-            </div>
-          </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-8 mx-auto">
-                <div class="modal-body">
-                  <h2>Misi</h2>
-                  <img class="img-fluid d-block mx-auto" src="{{URL::to('/')}}/assets/one/img/new/Misi.png" alt="">
-                  <tr>
-<td>
-<ol  style="text-align:justify">
-<li>Menghasilkan lulusan yang bermutu, bermoral, dan profesional dalam bidang teknik informatika serta mampu beradaptasi terhadap perkembangan ilmu pengetahuan dan teknologi sehingga dapat bersaing secara nasional dan regional.</li>
-<li>Meningkatkan pemberdayaan kelompok penelitian/kelompok bidang Minat (KBM) dalam pengembangan dan penerapan bidang sistem informasi dan rekayasa perangkat lunak, jaringan komputer dan komunikasi data, sistem cerdas dan sistem grafika, dan ilmu komputasi dan metode numerik. yang bertaraf nasional dan regional, untuk mendukung pengembangan ilmu pengetahuan dan teknologi.</li>
-<li>Meningkatkan penerapan hasil penelitian dasar dan terapan dalam bidang informatika untuk ikut serta dalam mendukung pembangunan nasional dan kesejahteraan masyarakat.</li>
-</ol>
-</tr>
-                  <button class="btn btn-primary" data-dismiss="modal" type="button">
-                    <i class="fa fa-times"></i>
-                    Close Misi</button>
-                </div>
+            <!-- Tab panes -->
+            <div class="tab-content">
+              <!-- Start news tab content -->
+              <div class="tab-pane fade in active" id="news">
+                <ul class="news_tab">
+                  <li>
+                    @if(count($data)>0)
+                    @foreach  ($data as $dat)
+                    <div class="media">
+                      <div class="media-left">
+                        <a class="news_img" href='{{url("/vUser/showNews/{$dat->ID}")}}'>
+                          <img class="media-object" src="{{ asset('image/berita/'.$dat->gambar)  }}" alt="img">
+                        </a>
+                      </div>
+                      <div class="media-body">
+                       <a href='{{url("/vUser/showNews/{$dat->ID}")}}'>{{$dat->Judul}}</a>
+                       <p><?php
+                       $artikel = $dat->Isi;
+                       $tag_artikel = strip_tags($artikel);
+                       $sub_artikel = substr($tag_artikel,0,50)." . . .";
+                       echo $sub_artikel;
+                       ?></p>
+                      </div>
+                    </div>
+                    @endforeach
+                    @endif
+                  </li>
+                  <li>
+                </ul>
+                <a class="see_all" href="{{url('/vUser/news')}}">See All</a>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="close-modal" data-dismiss="modal">
-            <div class="lr">
-              <div class="rl"></div>
-            </div>
-          </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-8 mx-auto">
-                <div class="modal-body">
-                  <h2>Rencana Strategis</h2>
-                  <img class="img-fluid d-block mx-auto" src="{{URL::to('/')}}/assets/one/img/new/rencana.png" alt="">
-                  <tr>
-<td>
-<ol>
-<li><a href="https://drive.google.com/open?id=0Bx4uEsniwF4KcWQzM2pIdjJ0Q0E" target = '_blank'>Rencana Strategis UNPAD 2015-2019</a>
-<li><a href="https://drive.google.com/open?id=0Bx4uEsniwF4KRlVfS2I4Ql9ub0U" target = '_blank'>Rencana Strategis Fakultas MIPA 2017-2021</a>
-</ol>
-</tr>
-
-                  <button class="btn btn-primary" data-dismiss="modal" type="button">
-                    <i class="fa fa-times"></i>
-                    Close Rencana Strategis</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="close-modal" data-dismiss="modal">
-            <div class="lr">
-              <div class="rl"></div>
-            </div>
-          </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-8 mx-auto">
-                <div class="modal-body">
-                  <h2>Latar Belakang</h2>
-                  <img class="img-fluid d-block mx-auto" src="{{URL::to('/')}}/assets/one/img/new/latar.png" alt="">
-                  <p  style="text-align:justify">
-                  <tr>
-                        <td>Program Sarjana Program Studi Teknik Informatika merupakan pengembangan dari Bidang Minat Ilmu Komputer di Jurusan Matematika FMIPA Universitas Padjadjaran, sesuai dengan rencana strategis jurusan, fakultas, dan universitas. Kurikulum Bidang Minat Ilmu Komputer diberlakukan tahun 2004 dan telah menghasilkan lulusan yang terserap di berbagai institusi baik negeri maupun swasta tersebar di Indonesia.</td>
-                  </tr>
-                  <tr>
-                        <td>Mengingat pertumbuhan teknologi yang cepat dan tingginya kebutuhan masyarakat dalam bidang Teknik Informatika (lulusan sekitar 5% dari kebutuhan), dan tingginya minat untuk mengikuti pendidikan bidang Teknik Informatika (sekitar 4% diterima dari peminat SNMPTN), serta mempertimbangkan berbagai masukan dari stakeholder dan alumni untuk menyempurnakan kurikulum yang mandiri sesuai dengan kebutuhan, maka disusun proposal pendirian Program Studi Teknik Informatika, dan telah mendapat persetujuan Dikti dengan <a href="http://informatika.unpad.ac.id/web/wp-content/uploads/2013/07/SK305.pdf" target = '_blank'><strong>SK Mendikbud Nomor: 305/E/O/2011</strong></a> tanggal 21 Desember 2011 tentang Ijin Penyelenggaraan Program Studi Teknik Informatika pada Universitas Padjadjaran. Pada tahun 2014 program studi S-1 Teknik Informatika memperoleh <strong>akreditasi B</strong> dari BAN PT sesuai dengan <a href="https://drive.google.com/open?id=0Bx4uEsniwF4Kclc5M0F1TGZiTTQ" target = '_blank'><strong>Surat Keputusan Nomor 483/SK/BAN-PT/Akred/S/XII/2014</strong></a>. </td>
-                  </tr>
-                  </p>
-                  <button class="btn btn-primary" data-dismiss="modal" type="button">
-                    <i class="fa fa-times"></i>
-                    Close Latar Belakang</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-           <div class="modal-content">
-          <div class="close-modal" data-dismiss="modal">
-            <div class="lr">
-              <div class="rl"></div>
-            </div>
-          </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-8 mx-auto">
-                <div class="modal-body">
-                  <h2>Kompetensi Lulusan</h2>
-                  <img class="img-fluid d-block mx-auto" src="{{URL::to('/')}}/assets/one/img/new/lulus.png" alt="">
-                  <p  style="text-align:justify"><strong>KOMPETENSI UTAMA:</strong> mampu melakukan pengembangan perangkat lunak untuk berbagai keperluan, melakukan analisis terhadap sistem dalam suatu instansi atau perusahaan dan membuat solusi yang integratif dengan memanfaatkan perangkat lunak, mampu merencanakan dan pengevaluasian penerapan Teknologi Informasi pada sebuah organisasi, mampu merancang dan memelihara basis data termasuk data warehouse untuk suatu instansi atau perusahaan, mampu melakukan pengujian fungsi-fungsi perangkat lunak, mampu mengembangkan, merancang dan membangun serta memelihara website dengan berbagai layanan dan fasilitasnya.</p>
-                  <ul class="list-inline"  style="text-align:justify">
-                    <tr>
-                          <td><strong>KOMPETENSI KHUSUS</strong> : lulusan teknik Informatika Unpad dapat memilih salah satu dari empat peminatan berikut:<br />
-                          (1) Sistem Informasi dan Rekayasa Perangkat Lunak (SIRPL),<br/>
-                          (2) Jaringan Komputer dan Komunikasi Data (JKKD),<br />
-                          (3) Sistem Cerdas dan Sistem Grafika (SCSG), serta<br />
-                          (4) Ilmu Komputasi dan Metode Numerik (IKMN).</td>
-                          </tr>
+              <!-- Start notice tab content -->
+              <div class="tab-pane fade " id="notice">
+                <div class="single_notice_pane">
+                  <ul class="news_tab">
+                    <li>
+                      <div class="media">
+                        <div class="media-left">
+                          <a class="news_img" href="#">
+                            <img class="media-object" src="img/news.jpg" alt="img">
+                          </a>
+                        </div>
+                        <div class="media-body">
+                         <a href="#">Dummy text of the printing and typesetting industry</a>
+                         <span class="feed_date">27.02.15</span>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="media">
+                        <div class="media-left">
+                          <a class="news_img" href="#">
+                            <img class="media-object" src="img/notice.jpg" alt="img">
+                          </a>
+                        </div>
+                        <div class="media-body">
+                         <a href="#">Dummy text of the printing and typesetting industry</a>
+                         <span class="feed_date">28.02.15</span>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="media">
+                        <div class="media-left">
+                          <a class="news_img" href="#">
+                            <img class="media-object" src="img/notice.jpg" alt="img">
+                          </a>
+                        </div>
+                        <div class="media-body">
+                         <a href="#">Dummy text of the printing and typesetting industry</a>
+                         <span class="feed_date">28.02.15</span>
+                        </div>
+                      </div>
+                    </li>
                   </ul>
-                  <button class="btn btn-primary" data-dismiss="modal" type="button">
-                    <i class="fa fa-times"></i>
-                    Close Kompetensi Kelulusan</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
- <div class="modal-content">
-          <div class="close-modal" data-dismiss="modal">
-            <div class="lr">
-              <div class="rl"></div>
-            </div>
-          </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-8 mx-auto">
-                <div class="modal-body">
-                  <h2>Prospek Lulusan</h2>
-                  <img class="img-fluid d-block mx-auto" src="{{URL::to('/')}}/assets/one/img/new/lulusan.png" alt="">
-                  <ul class="list-inline"  style="text-align:justify">
-                    <li>Lulusan program studi Teknik Informatika Universitas Padjadjaran diharapkan dapat mengisi lapangan kerja di berbagai institusi pemerintah, perusahaan swasta, dan industri.</li>
-                    <li>Lulusan Teknik Informatika dapat menjadi karyawan, wiraswastawan (entreupreneur), profesional, birokrat, dan akademisi.</li>
-                    <li>Lulusan diarahkan dapat mengisi karir pekerjaan bidang supervisi, asisten manajer dan administrator.</li>
-                    <li>Sebagai contoh lulusan Teknik Informatika harus mampu menjadi Capacity Planning Supervisor, Database Administrator, Customer Service Supervisor, Data Communication Assistant manager, Data Entry Supervisor, Information Center Manager, Hardware Installation Supervisor, System Administrator, Webmaster, Project Manager Applications, Project Manager Distributed Systems, Project Network Technical Services, Project Manager Implementation Deployment, dan lain-lain.</li>
+                  <ul class="news_tab">
+                    <li>
+                      <div class="media">
+                        <div class="media-left">
+                          <a class="news_img" href="#">
+                            <img class="media-object" src="img/notice.jpg" alt="img">
+                          </a>
+                        </div>
+                        <div class="media-body">
+                         <a href="#">Contrary to popular belief, Lorem Ipsum is not simply random text</a>
+                         <span class="feed_date">27.02.15</span>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="media">
+                        <div class="media-left">
+                          <a class="news_img" href="#">
+                            <img class="media-object" src="img/notice.jpg" alt="img">
+                          </a>
+                        </div>
+                        <div class="media-body">
+                         <a href="#">Dummy text of the printing and typesetting industry</a>
+                         <span class="feed_date">28.02.15</span>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="media">
+                        <div class="media-left">
+                          <a class="news_img" href="#">
+                            <img class="media-object" src="img/notice.jpg" alt="img">
+                          </a>
+                        </div>
+                        <div class="media-body">
+                         <a href="#">Contrary to popular belief, Lorem Ipsum is not simply random text</a>
+                         <span class="feed_date">28.02.15</span>
+                        </div>
+                      </div>
+                    </li>
                   </ul>
-                  <button class="btn btn-primary" data-dismiss="modal" type="button">
-                    <i class="fa fa-times"></i>
-                    Close Project</button>
                 </div>
               </div>
+              <!-- Start events tab content -->
+              <div class="tab-pane fade " id="events">
+                <ul class="news_tab">
+                  <li>
+                    <div class="media">
+                      <div class="media-left">
+                        <a class="news_img" href="#">
+                          <img class="media-object" src="img/news.jpg" alt="img">
+                        </a>
+                      </div>
+                      <div class="media-body">
+                       <a href="#">Dummy text of the printing and typesetting industry</a>
+                       <span class="feed_date">27.02.15</span>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="media">
+                      <div class="media-left">
+                        <a class="news_img" href="#">
+                          <img class="media-object" src="img/news.jpg" alt="img">
+                        </a>
+                      </div>
+                      <div class="media-body">
+                       <a href="#">Dummy text of the printing and typesetting industry</a>
+                       <span class="feed_date">28.02.15</span>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="media">
+                      <div class="media-left">
+                        <a class="news_img" href="#">
+                          <img class="media-object" src="img/news.jpg" alt="img">
+                        </a>
+                      </div>
+                      <div class="media-body">
+                       <a href="#">Dummy text of the printing and typesetting industry</a>
+                       <span class="feed_date">28.02.15</span>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+                <a class="see_all" href="#">See All</a>
+              </div>
             </div>
-          </div>-->
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
+      </div>
+    </section>
+    <!--=========== END ABOUT US SECTION ================-->
 
-@include('inc.footerHome')
+    <!--=========== BEGIN WHY US SECTION ================-->
+    <section id="whyUs">
+      <!-- Start why us top -->
+      <div class="row">
+        <div class="col-lg-12 col-sm-12">
+          <div class="whyus_top">
+            <div class="container">
+              <!-- Why us top titile -->
+              <div class="row">
+                <div class="col-lg-12 col-md-12">
+                  <div class="title_area">
+                    <h2 class="title_two">BIDANG MINAT</h2>
+                    <span></span>
+                  </div>
+                </div>
+              </div>
+              <!-- End Why us top titile -->
+              <!-- Start Why us top content  -->
+              <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3">
+                  <div class="single_whyus_top wow fadeInUp">
+                    <div class="whyus_icon">
+                      <span class="fa fa-desktop"></span>
+                    </div>
+                    <h3>Sistem Informasi</h3>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3">
+                  <div class="single_whyus_top wow fadeInUp">
+                    <div class="whyus_icon">
+                      <span class="fa fa-bug"></span>
+                    </div>
+                    <h3>Kecerdasan Buatan</h3>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3">
+                  <div class="single_whyus_top wow fadeInUp">
+                    <div class="whyus_icon">
+                      <span class="fa fa-sitemap"></span>
+                    </div>
+                    <h3>Jaringan Komputer</h3>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3">
+                  <div class="single_whyus_top wow fadeInUp">
+                    <div class="whyus_icon">
+                      <span class="fa fa-unlink"></span>
+                    </div>
+                    <h3>Metode Numerik</h3>
+                  </div>
+                </div>
+              </div>
+              <!-- End Why us top content  -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End why us top -->
+
+    <!--=========== BEGIN OUR TUTORS SECTION ================-->
+    <section id="studentsTestimonial">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 col-md-12">
+            <div class="title_area">
+              <h2 class="title_two">Manajemen</h2>
+              <span></span>
+            </div>
+          </div>
+        </div>
+        <!-- End Our courses titile -->
+
+        <!-- Start Our courses content -->
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="studentsTestimonial_content">
+              <div class="row">
+                <!-- start single student testimonial -->
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                  <div class="single_stsTestimonial wow fadeInUp">
+                    <img class="stsTesti_img" src="http://informatika.unpad.ac.id/new/wp-content/uploads/2017/04/Pa-Setiawan.jpg" alt="img">
+                    <div class="stsTestimonial_content">
+                      <h3>Dr. Setiawan Hadi, M.Sc.CS.</h3>
+                      <span>KEPALA DEPARTEMEN ILMU KOMPUTER</span>
+                      <p>Visi Komputer</p>
+                    </div>
+                  </div>
+                </div>
+                <!-- End single student testimonial -->
+                <!-- start single student testimonial -->
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                  <div class="single_stsTestimonial wow fadeInUp">
+                    <img class="stsTesti_img" src="http://informatika.unpad.ac.id/new/wp-content/uploads/2017/04/Pa-Juli.jpg" alt="img">
+                    <div class="stsTestimonial_content">
+                      <h3>Dr. Juli Rejito, M.Kom</h3>
+                      <span>KETUA PRODI TEKNIK INFORMATIKA</span>
+                      <p>Sistem Database</p>
+                    </div>
+                  </div>
+                </div>
+                <!-- End single student testimonial -->
+                <!-- start single student testimonial -->
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                  <div class="single_stsTestimonial wow fadeInUp">
+                    <img class="stsTesti_img" src="http://informatika.unpad.ac.id/new/wp-content/uploads/2017/04/Pa-Ino.jpg" alt="img">
+                    <div class="stsTestimonial_content">
+                      <h3>Drs. Ino Suryana, M.Kom</h3>
+                      <span>SEKRETARIS PRODI TEKNIK INFORMATIKA</span>
+                      <p>Metode Numerik</p>
+                    </div>
+                  </div>
+                </div>
+                <!-- End single student testimonial -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--=========== END OUR TUTORS SECTION ================-->
+
+    <!--=========== BEGIN STUDENTS TESTIMONIAL SECTION ================-->
+    <section id="studentsTestimonial">
+      <div class="container">
+       <!-- Our courses titile -->
+
+        <!-- End Our courses content -->
+      </div>
+    </section>
+    <!--=========== END STUDENTS TESTIMONIAL SECTION ================-->
+@include('inc.new_footer')

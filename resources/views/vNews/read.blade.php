@@ -3,7 +3,7 @@
 <script src="{{URL::to('/')}}/Asset/ckeditor/ckeditor.js"></script>
 
 <div class="table-heading">
-					<h2>Read News</h2>
+					<h2>Berita</h2>
 				</div>
             @if(session('info'))
                   <div class="alert alert-success">

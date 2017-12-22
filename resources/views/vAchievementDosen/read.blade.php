@@ -3,7 +3,7 @@
 
 	<div class="container">
 			<div class="row">
-			 <legend>READ LECTURERS ACHIEVEMENT</legend>
+			 <legend>Baca Prestasi Dosen</legend>
 				   		<p>{{$data->ID}}</p>
 						<p>{{$data->NIDN}}</p>
 						<p>{{$data->Nama}}</p>

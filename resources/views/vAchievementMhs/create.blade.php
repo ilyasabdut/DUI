@@ -8,7 +8,7 @@
                      {{csrf_field()}}
 
                       <fieldset>
-                        <legend>CREATE STUDENT ACHIEVEMENT</legend>
+                        <legend>Masukan Prestasi Mahasiswa</legend>
 
                         @if(count($errors) > 0)
                             @foreach($errors->all() as $error)

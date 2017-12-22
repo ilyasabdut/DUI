@@ -3,7 +3,7 @@
 
 	<div class="container">
 			<div class="row">
-			 <legend>READ STUDENT PUBLICATION</legend>
+			 <legend>Publikasi Mahasiswa</legend>
 				   		<p>{{$data->ID}}</p>
 						<p>{{$data->NPM}}</p>
 						<p>{{$data->Nama}}</p>

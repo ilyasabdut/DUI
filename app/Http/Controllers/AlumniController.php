@@ -20,14 +20,16 @@ class AlumniController extends Controller
 {
     public function getAl(){
 
-        $data = Alumni::orderBy('ID', 'asc')->paginate(10);       
+        $data = Alumni::all();
+
+
         return view('vUser/alumni',compact('data'));
     }
-	
+
     public function getData(){
 
-    	$data = Alumni::orderBy('ID', 'asc')->paginate(5);
-    	
+    	$data = Alumni::paginate(10);
+
     	return view('vAlumni/table',compact('data'));
     }
 
@@ -38,8 +40,8 @@ class AlumniController extends Controller
     		'Nama' => 'required',
     		'Pembimbing' => 'required',
     		'Tanggal' => 'required',
-    		'Penguji' => 'required',
     		'Judul' => 'required',
+            'TanggalMasuk' => 'required'
     	]);
 
 
@@ -48,8 +50,8 @@ class AlumniController extends Controller
     	$data->Nama= $req->input('Nama');
     	$data->Pembimbing = $req->input('Pembimbing');
     	$data->Tanggal= $req->input('Tanggal');
-    	$data->Penguji = $req->input('Penguji');
     	$data->Judul = $req->input('Judul');
+        $data->TanggalMasuk = $req->input('TanggalMasuk');
     	$data->save();
 
     	  if(count($data) > 0){
@@ -61,7 +63,7 @@ class AlumniController extends Controller
 
     public function update($ID){
     	$data = Alumni::find($ID);
-    	
+
     	return view('vAlumni/update',['data' => $data]);
     }
 
@@ -72,7 +74,7 @@ class AlumniController extends Controller
     		'Pembimbing' => 'required',
     		'Tanggal' => 'required',
     		'Judul' => 'required',
-            'Angkatan' => 'required'
+            'TanggalMasuk' => 'required'
     	]);
 
     	$data = array(
@@ -81,7 +83,7 @@ class AlumniController extends Controller
 			'Pembimbing' => $req->input('Pembimbing'),
 			'Tanggal' =>$req->input('Tanggal'),
 			'Judul' => $req->input('Judul'),
-            'Angkatan' => $req->input('angkatan')
+            'TanggalMasuk' => $req->input('TanggalMasuk')
     	);
 
     	Alumni::where('ID', $ID)->update($data);
@@ -95,7 +97,7 @@ class AlumniController extends Controller
 
     public function read($ID){
     	$data = Alumni::find($ID);
-    	
+
     	return view('vAlumni/read',['data' => $data]);
     }
 
@@ -110,7 +112,7 @@ class AlumniController extends Controller
     }
 
 
-    
+
 
     public function downloadExcel($type)
     {
@@ -125,12 +127,13 @@ class AlumniController extends Controller
 
     public function importExcel(Request $req)
     {
+        Alumni::truncate();
         $this->validate($req, ['import_file' => 'required|mimes:xls,xlsx,csv']);
 
         if(Input::hasFile('import_file')){
             $path = Input::file('import_file')->getRealPath();
             $data = Excel::load($path, function($reader) {
-               
+
             })->get();
             if(!empty($data) && $data->count()){
                 foreach ($data as $key => $value) {
@@ -142,17 +145,17 @@ class AlumniController extends Controller
                     'Pembimbing' => $value->pembimbing,
                     'Tanggal' =>$value->tanggal,
                     'Judul' => $value->judul,
-                    'Angkatan' => $value->angkatan
+                    'TanggalMasuk' => $value->tanggalmasuk
                 ];
-                } 
+                }
 
                 if(!empty($insert)){
                     DB::table('Alumni')->insert($insert);
                 return redirect('/admin/vAlumni/table')->with('info','Record Uploaded Successfully');
-                }          
+                }
             }
         }
         return back();
     }
-    
+
 }

@@ -11,7 +11,7 @@
 					 {{csrf_field()}}
 
 					  <fieldset>
-					    <legend>CREATE LECTURER</legend>
+					    <legend>Dosen</legend>
 					    @if(count($errors) > 0)
 					    	@foreach($errors->all() as $error)
 
@@ -21,6 +21,10 @@
 
 					    	@endforeach
 					    @endif
+
+
+
+
 
 					    <div class="form-group">
 					      <label for="inputNIDN" class="col-lg-2 control-label">NIDN</label>
@@ -48,6 +52,10 @@
 						        <input type="file" name="image" class="form-control" id="image">
 						    </div>
 						</div>
+
+
+
+
 
 					    <div class="form-group">
 					      <div class="col-lg-10 col-lg-offset-2">

@@ -1,7 +1,7 @@
 @include('inc.header1')
 <script src="{{URL::to('/')}}/Asset/ckeditor/ckeditor.js"></script>
 <div class="table-heading">
-	<h2>Partnership Tables</h2>
+	<h2>Kerjasama</h2>
 </div>
 
 @if(session('info'))
@@ -16,14 +16,18 @@
 
                         </div>
                         <div class="panel-body">
+
+                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+
                             <table id="datatable-responsive" class="table table-striped table-bordered">
+
                                 <thead>
                                     <tr>
                                     	<th>ID</th>
                                         <th>Partner</th>
                                         <th>Program</th>
                                         <th>Jenis</th>
-                                        <th width="230px">Action</th>
+                                        <th width="">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -35,7 +39,6 @@
                                       <td>{{$dat->Program}}</td>
                                       <td>{{$dat->Jenis}}</td>
                                       <td>
-									      	              <a href='{{url("/admin/vPartnership/read/{$dat->ID}")}}' class="label label-primary"><i class="glyphicon glyphicon-list-alt"></i> Read </a>  &nbsp;
 									      	              <a href='{{url("/admin/vPartnership/update/{$dat->ID}")}}' class="label label-success"><i class="glyphicon glyphicon-edit"></i> Update </a>  &nbsp;
 									      	              <a href='{{url("/admin/vPartnership/delete/{$dat->ID}")}}'  class="label label-danger"><i class="glyphicon glyphicon-trash"></i> Delete </a>
 									                    </td>
@@ -44,9 +47,7 @@
 									              @endif
                                 </tbody>
                             </table>
-                            <div class="text-center">
-                              {!! $data->links(); !!}
-                            </div>
+
                         </div>
                     </div>
                 </div>

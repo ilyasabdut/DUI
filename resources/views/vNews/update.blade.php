@@ -7,13 +7,17 @@
        <div class="container">
         <div class="row">
             <div class="col-md-10">
+
+               <form class="form-horizontal" method="POST" action="{{url('/admin/vNews/edit',array($data->ID))}}">
+
                <form class="form-horizontal" method="POST" action="{{url('/admin/vNews/edit',array($data->ID))}}" enctype="multipart/form-data">
+
 
                  {{csrf_field()}}
 
                   <fieldset>
 
-                 <legend>UPDATE NEWS</legend>
+                 <legend>Berita</legend>
                  @if(count($errors) > 0)
                      @foreach($errors->all() as $error)
 
@@ -50,9 +54,13 @@
                  <div class="col-lg-10">
                    <input type="text" name="Tag" class="form-control" id="inputTag" value="<?php echo $data->Tag; ?>" placeholder="Tag">
                  </div>
+
+               </div>
+
                </div
 
-               
+
+
 
                <div class="form-group">
                  <div class="col-lg-10">

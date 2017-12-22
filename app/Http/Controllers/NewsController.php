@@ -24,7 +24,7 @@ class NewsController extends Controller
 
     public function getData(){
 
-        $data = News::orderBy('ID', 'asc')->get();
+        $data = News::all();
 
 
         return view('vNews/table',compact('data'));
@@ -113,7 +113,7 @@ class NewsController extends Controller
 
     public function getNews(){
 
-        $data = News::orderBy('ID', 'desc')->paginate(6);
+        $data = News::orderBy('ID', 'desc')->paginate(3);
         return view('/index',compact('data'));
     }
 
@@ -123,6 +123,16 @@ class NewsController extends Controller
         return view('vUser/showNews',['data' => $data]);
     }
 
+    public function viewNews(){
+
+        $data = News::orderBy('ID', 'desc')->paginate(6);
+        return view('/vUser/news',compact('data'));
+    // public function lastNews(){
+    //
+    //     $data = News::orderBy('ID', 'desc')->paginate(4);
+    //     return view('/vUser/showNews',compact('data'));
+    // }
+  }
 
 
 }

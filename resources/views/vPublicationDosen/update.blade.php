@@ -11,7 +11,7 @@
                      {{csrf_field()}}
 
                       <fieldset>
-                        <legend>UPDATE LECTURERS PUBLICATION</legend>
+                        <legend>Publikasi Dosen</legend>
 
                         @if(count($errors) > 0)
                             @foreach($errors->all() as $error)
@@ -56,7 +56,11 @@
                         <div class="form-group">
                               <label for="inputKeterangan" class="col-lg-2 control-label">Keterangan</label>
                             <div class="col-lg-10">
+
+                                <input type="text" name="Keterangan" class="form-control" id="inputKeterangan" value="<?php echo $data->Keternagan; ?>" placeholder="Keterangan">
+
                                 <input type="text" name="Keterangan" class="form-control" id="inputKeterangan" value="<?php echo $data->Keterangan; ?>" placeholder="Keterangan">
+
                             </div>
                         </div>
 

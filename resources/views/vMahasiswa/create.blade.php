@@ -10,7 +10,7 @@
 					 {{csrf_field()}}
 
 					  <fieldset>
-					    <legend>CREATE STUDENT</legend>
+					    <legend>Mahasiswa</legend>
 					    @if(count($errors) > 0)
 					    	@foreach($errors->all() as $error)
 
@@ -39,6 +39,12 @@
 						      <label for="inputPembimbing" class="col-lg-2 control-label">Email</label>
 						    <div class="col-lg-10">
 						        <input type="text" name="Email" class="form-control" id="inputEmail" placeholder="Email">
+						    </div>
+						</div>
+						<div class="form-group">
+						      <label for="inputTanggalMasuk" class="col-lg-2 control-label">Tanggal Masuk</label>
+						    <div class="col-lg-10">
+						        <input type="date" name="TanggalMasuk" class="form-control" id="inputTanggalMasuk" placeholder="TanggalMasuk">
 						    </div>
 						</div>
 

@@ -16,7 +16,7 @@ class EducationController extends Controller
     
     public function getData(){
 
-        $data = Education::orderBy('ID', 'asc')->paginate(5);
+        $data = Education::all();
         
         return view('vEducation/table',compact('data'));
     }

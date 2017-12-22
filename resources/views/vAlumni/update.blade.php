@@ -8,7 +8,7 @@
 					 {{csrf_field()}}
 
 					  <fieldset>
-					    <legend>UPDATE ALUMNI</legend>
+					    <legend>Rubah Data Alumni</legend>
 					    @if(count($errors) > 0)
 					    	@foreach($errors->all() as $error)
 
@@ -50,16 +50,31 @@
 
 
 						<div class="form-group">
+						      <label for="inputPenguji" class="col-lg-2 control-label">Penguji</label>
+						    <div class="col-lg-10">
+						        <input type="text" name="Penguji" class="form-control" value="<?php echo $data->Penguji; ?>" id="inputPenguji" placeholder="Penguji">
+
+
+						<div class="form-group">
 					      <label for="inputJudul" class="col-lg-2 control-label">Judul</label>
 						    <div class="col-lg-10">
 						        <input type="text" name="Judul" class="form-control" value="<?php echo $data->Judul; ?>" id="inputJudul" placeholder="Judul">
+
 						    </div>
 						</div>
 
 						<div class="form-group">
+					      <label for="inputJudul" class="col-lg-2 control-label">Judul</label>
+						    <div class="col-lg-10">
+						        <input type="text" name="Judul" class="form-control" value="<?php echo $data->Judul; ?>" id="inputJudul" placeholder="Judul">
+
 						      <label for="inputAngkatan" class="col-lg-2 control-label">Angkatan</label>
 						    <div class="col-lg-10">
 						        <input type="text" name="Angkatan" class="form-control" value="<?php echo $data->Angkatan; ?>" id="inputAngkatan" placeholder="Angkatan">
+
+						      <label for="inputTanggalMasuk" class="col-lg-2 control-label">Tanggal Masuk</label>
+						    <div class="col-lg-10">
+						        <input type="date" name="TanggalMasuk" class="form-control" value="<?php echo $data->TanggalMasuk; ?>" id="inputTanggalMasuk" placeholder="TanggalMasuk">
 						    </div>
 						</div>
 

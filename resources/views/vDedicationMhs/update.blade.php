@@ -12,7 +12,7 @@
                      {{csrf_field()}}
 
                       <fieldset>
-                        <legend>UPDATE STUDENT SOCIAL ENGAGEMENT</legend>
+                        <legend>Pengabdian Mahasiswa</legend>
 
                         @if(count($errors) > 0)
                             @foreach($errors->all() as $error)

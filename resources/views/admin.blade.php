@@ -213,50 +213,7 @@
                         </a>
                     </div>
                 </div>
-            <div class="col-lg-4 col-md-6">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-search fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge"><span>{{ count(DB::table('ResearchMhs')->get())}}</span></div>
-                                    <div>Student Research</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="/admin/vResearchMhs/table">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            <div class="col-lg-4 col-md-6">
-                    <div class="panel panel-danger">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="glyphicon glyphicon-cloud-upload" style="font-size:75px"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge"><span>{{ count(DB::table('PublicationMhs')->get())}}</span></div>
-                                    <div>Student Publication</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="/admin/vPublicationMhs/table">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+           
 
             <div class="col-lg-4 col-md-6">
                     <div class="panel panel-success">

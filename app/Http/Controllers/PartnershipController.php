@@ -19,14 +19,14 @@ class PartnershipController extends Controller
 {
     public function getPartner(){
 
-        $data = Partnership::orderBy('ID', 'asc')->paginate(10);       
+        $data = Partnership::all();
         return view('vUser/partnership',compact('data'));
     }
-	
+
     public function getData(){
 
-    	$data = Partnership::orderBy('ID', 'asc')->paginate(5);
-    	
+    	$data = Partnership::all();
+
     	return view('vPartnership/table')->with('data', $data);
     }
 
@@ -36,7 +36,7 @@ class PartnershipController extends Controller
     		'Partner' => 'required',
     		'Program' => 'required',
     		'Jenis' => 'required',
-    		
+
     	]);
 
 
@@ -44,7 +44,7 @@ class PartnershipController extends Controller
     	$data->Partner = $req->input('Partner');
     	$data->Program = $req->input('Program');
     	$data->Jenis = $req->input('Jenis');
-    	
+
     	$data->save();
 
     	  if(count($data) > 0){
@@ -56,7 +56,7 @@ class PartnershipController extends Controller
 
     public function update($ID){
     	$data = partnership::find($ID);
-    	
+
     	return view('vPartnership/update',['data' => $data]);
     }
 
@@ -84,7 +84,7 @@ class PartnershipController extends Controller
 
     public function read($ID){
     	$data = partnership::find($ID);
-    	
+
     	return view('vPartnership/read',['data' => $data]);
     }
 
@@ -111,30 +111,32 @@ class PartnershipController extends Controller
 
     public function importExcel(Request $req)
     {
+      Partnership::truncate();
+
         $this->validate($req, ['import_file' => 'required|mimes:xls,xlsx,csv']);
 
         if(Input::hasFile('import_file')){
             $path = Input::file('import_file')->getRealPath();
             $data = Excel::load($path, function($reader) {
-               
+
             })->get();
             if(!empty($data) && $data->count()){
                 foreach ($data as $key => $value) {
                     $insert[] = [
-                       
+
                     'Partner' => $value->partner,
                     'Program' =>  $value->program,
                     'Jenis' => $value->jenis
-                    
-                ];} 
+
+                ];}
 
                 if(!empty($insert)){
                     DB::table('Partnership')->insert($insert);
                 return redirect('/admin/vPartnership/table')->with('info','Record Uploaded Successfully');
-                }          
+                }
             }
         }
-        
+
         return back();
     }
 }

@@ -4,7 +4,6 @@
         <div class="row">
             <div class="col-md-6">
 
-                <form class="form-horizontal" method="POST" action="{{('/admin//vDedicationDosen/insert')}}">
 
                 <form class="form-horizontal" method="POST" action="{{('/admin/vDedicationDosen/insert')}}">
 
@@ -12,7 +11,7 @@
                      {{csrf_field()}}
 
                       <fieldset>
-                        <legend>CREATE LECTURERS SOCIAL ENGAGEMENT</legend>
+                        <legend>Pengabdian Dosen</legend>
 
                         @if(count($errors) > 0)
                             @foreach($errors->all() as $error)

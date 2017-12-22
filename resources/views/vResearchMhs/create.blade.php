@@ -12,8 +12,6 @@
 
                       <fieldset>
 
-                        <legend>CREATE LECTURERS RESEARCH</legend>
-
                         <legend>CREATE STUDENT'S RESEARCH</legend>
 
 

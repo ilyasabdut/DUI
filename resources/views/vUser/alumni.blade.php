@@ -1,4 +1,4 @@
-@include('inc.headerOther')
+@include('inc.new_header')
 
     <!-- Page Content -->
     <div class="container">
@@ -6,52 +6,46 @@
       <!-- Page Heading/Breadcrumbs -->
       <h1 class="mt-4 mb-3">ALUMNI
       </h1>
-
+      <hr>
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
           <a href="{{url('/')}}">Home</a>
         </li>
         <li class="breadcrumb-item active">Alumni</li>
       </ol>
-
-      <div class="container">
-        <table class="table table-striped">
+      <div class="mb-4" id="accordion" role="tablist" aria-multiselectable="true">
+        <table id="datatable-responsive" class="table table-striped table-bordered">
+          <thead>
+              <tr>
+                  <th>Nama</th>
+                  <th>Pembimbing</th>
+                  <th>Tanggal</th>
+                  <th>Judul</th>
+                  <th>Angkatan</th>
+              </tr>
+          </thead>
           <tbody>
-             <tr>
-              <th style="text-align: center;">ID</th>
-              <th style="text-align: center;">NPM</th>
-              <th style="text-align: center;">Nama</th>
-              <th style="text-align: center;">Pembimbing</th>
-              <th style="text-align: center;">Judul</th>
-              <th style="text-align: center;">Tanggal Lulus</th>
-              <th style="text-align: center;">Angkatan</th>
-
-
+          @if(count($data)>0)
+          @foreach ($data as $dat)
+              <tr>
+                <td>{{$dat->Nama}}</td>
+                <td>{{$dat->Pembimbing}}</td>
+                <td>{{$dat->Tanggal->format('d-m-Y')}}</td>
+                <td>{{$dat->Judul}}</td>
+              <td>{{$dat->TanggalMasuk->format('Y')}}</td>
             </tr>
-            @if(count($data)>0)
-              @foreach($data as $dat)
-            <tr>
-             <td style="text-align: center;"><b>{{$dat->ID}}</b></td>
-              <td style="text-align: center;"><strong>{{$dat->NPM}}</strong></td>
-              <td style="text-align: center;">{{$dat->Nama}}</td>
-              <td style="text-align: center;">{{$dat->Pembimbing}}</td>
-              <td style="text-align: center;"><strong>{{$dat->Judul}}</strong></td>      
-              <td style="text-align: center;"><strong>{{$dat->Tanggal->format('d/m/Y')}}</strong></td>
-             <td style="text-align: center;">{{$dat->angkatan}}</td>
-
-            </tr>
-              @endforeach
+            @endforeach
             @endif
-
           </tbody>
         </table>
-        
-                              {!! $data->links(); !!}
-                          
       </div>
     </div>
-    
+  </div>
+</div>
+</div>
+</div>
+</div>
+<!-- /.
     <!-- /.container -->
 
-  @include('inc.footerOther')
-
+  @include('inc.new_footer')
